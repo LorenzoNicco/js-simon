@@ -12,9 +12,12 @@
 
 console.log("Collegamento js ok");
 
-// Lista numeri base
+// Lista numeri
 const cpuNumbers = []
 console.log("cpuNumbers", cpuNumbers);
+
+const checkNumbers = [];
+console.log("checkNumbers", checkNumbers);
 
 // Generazione numeri random
 for (let i = 0; i < 5; i++) {
@@ -29,6 +32,34 @@ const canvas = document.getElementById("canvas");
 canvas.innerHTML = cpuNumbers;
 console.log("cpuNumbers", cpuNumbers);
 
-// Impostazione funzione con ritardo
+// Impostazione funzioni con ritardo
 const delay = () => canvas.innerHTML = " ";
 setTimeout(delay, 5000);
+
+setTimeout(userInteraction, 5001);
+function userInteraction () {
+    
+    for (let i = 1; i <= 5; i++) {
+        const userNumbers = parseInt(prompt("Inserisci il numero che hai visto alla posizione " + i));
+        checkNumbers.push(userNumbers);
+        console.log("userNumbers", userNumbers, typeof userNumbers);
+    }
+
+    console.log("checkNumbers", checkNumbers);
+
+    let score = 0;
+
+    const goodNumbers = [];
+
+    for (let i = 0; i < 5; i++) {
+        if (cpuNumbers[i] == checkNumbers[i]) {
+            goodNumbers.push(checkNumbers[i]);
+            score++;
+        }
+    }
+
+    alert("Hai indovinato " + score + " numeri. Ovvero: " + goodNumbers);
+
+    console.log("score", score);
+    console.log("goodNumbers", goodNumbers);
+}
