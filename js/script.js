@@ -21,7 +21,7 @@ console.log("checkNumbers", checkNumbers);
 
 // Generazione numeri random
 for (let i = 0; i < 5; i++) {
-    const number = Math.floor(Math.random() * 10) + 1;
+    const number = Math.floor(Math.random() * 100) + 1;
     cpuNumbers.push(number);
     console.log("number", number, typeof number);
 }
@@ -34,9 +34,9 @@ console.log("cpuNumbers", cpuNumbers);
 
 // Impostazione funzioni con ritardo
 const delay = () => canvas.innerHTML = " ";
-setTimeout(delay, 5000);
+setTimeout(delay, 30000);
 
-setTimeout(userInteraction, 5001);
+setTimeout(userInteraction, 30500);
 function userInteraction () {
     
     for (let i = 1; i <= 5; i++) {
