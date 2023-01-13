@@ -33,10 +33,10 @@ canvas.innerHTML = cpuNumbers;
 console.log("cpuNumbers", cpuNumbers);
 
 // Impostazione funzioni con ritardo
-const delay = () => canvas.innerHTML = " ";
-setTimeout(delay, 30000);
+const blankCanvas = () => canvas.innerHTML = " ";
+setTimeout(blankCanvas, 30000);
 
-setTimeout(userInteraction, 30500);
+setTimeout(userInteraction, 31000);
 function userInteraction () {
     
     for (let i = 1; i <= 5; i++) {

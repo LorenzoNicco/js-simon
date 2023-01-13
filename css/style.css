@@ -1,0 +1,33 @@
+/* reset */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* regole */
+main {
+    background-color: lightslategrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.cornice {
+    background-color: white;
+    height: 20%;
+    width: 40%;
+    border: 2px solid black;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: inset 0px 0px 13px 0px rgba(0,0,0,0.62);
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+    font-size: 3rem;
+    font-weight: bold;
+}
