@@ -48,6 +48,7 @@ function userInteraction () {
     console.log("checkNumbers", checkNumbers);
 
     let score = 0;
+    let wrongNumbers = 0;
 
     const goodNumbers = [];
 
@@ -56,9 +57,18 @@ function userInteraction () {
             goodNumbers.push(checkNumbers[i]);
             score++;
         }
+        if (cpuNumbers[i] != checkNumbers[i]) {
+            wrongNumbers++;
+        }
     }
 
-    alert("Hai indovinato " + score + " numeri. Ovvero: " + goodNumbers);
+    if (wrongNumbers == 5) {
+        alert("Mi dispiace, hai perso.");
+    }
+    else {
+        alert("Hai indovinato " + score + " numeri. Ovvero: " + goodNumbers);
+    }
+    
 
     console.log("score", score);
     console.log("goodNumbers", goodNumbers);
