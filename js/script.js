@@ -12,6 +12,11 @@
 
 console.log("Collegamento js ok");
 
+// Aquisizione elementi html
+const send = document.getElementById("btn");
+
+const canvas = document.getElementById("canvas");
+
 // Lista numeri
 const cpuNumbers = []
 console.log("cpuNumbers", cpuNumbers);
@@ -26,50 +31,100 @@ for (let i = 0; i < 5; i++) {
     console.log("number", number, typeof number);
 }
 
-const canvas = document.getElementById("canvas");
-
 // Stampa dei numeri in pagina
-canvas.innerHTML = cpuNumbers;
+canvas.innerHTML = cpuNumbers.join(" - ");
 console.log("cpuNumbers", cpuNumbers);
 
-// Impostazione funzioni con ritardo
-const blankCanvas = () => canvas.innerHTML = " ";
-setTimeout(blankCanvas, 30000);
+// Soluzione con prompt-----------------------------------
+// // Impostazione funzioni con ritardo
+// const blankCanvas = () => canvas.innerHTML = " ";
+// setTimeout(blankCanvas, 30000);
 
-setTimeout(userInteraction, 31000);
+// setTimeout(userInteraction, 31000);
+// function userInteraction () {
+    
+//     for (let i = 1; i <= 5; i++) {
+//         const userNumbers = parseInt(prompt("Inserisci il numero che hai visto alla posizione " + i));
+//         checkNumbers.push(userNumbers);
+//         console.log("userNumbers", userNumbers, typeof userNumbers);
+//     }
+
+//     console.log("checkNumbers", checkNumbers);
+
+//     let score = 0;
+//     let wrongNumbers = 0;
+
+//     const goodNumbers = [];
+
+//     for (let i = 0; i < 5; i++) {
+//         if (cpuNumbers[i] == checkNumbers[i]) {
+//             goodNumbers.push(checkNumbers[i]);
+//             score++;
+//         }
+//         if (cpuNumbers[i] != checkNumbers[i]) {
+//             wrongNumbers++;
+//         }
+//     }
+
+//     if (wrongNumbers == 5) {
+//         alert("Mi dispiace, hai perso.");
+//     }
+//     else {
+//         alert("Hai indovinato " + score + " numeri. Ovvero: " + goodNumbers);
+//     }
+    
+//     console.log("score", score);
+//     console.log("goodNumbers", goodNumbers);
+// }
+
+
+// Soluzione con input----------------------------------------
+setTimeout(userInteraction, 30000);
 function userInteraction () {
-    
-    for (let i = 1; i <= 5; i++) {
-        const userNumbers = parseInt(prompt("Inserisci il numero che hai visto alla posizione " + i));
-        checkNumbers.push(userNumbers);
-        console.log("userNumbers", userNumbers, typeof userNumbers);
-    }
+    canvas.innerHTML = "Che numeri erano?";
 
-    console.log("checkNumbers", checkNumbers);
+    let userNumbers = document.getElementById("userData");
+    userNumbers.classList.remove("disabled");
+    send.classList.remove("disabled");
 
-    let score = 0;
-    let wrongNumbers = 0;
 
-    const goodNumbers = [];
 
-    for (let i = 0; i < 5; i++) {
-        if (cpuNumbers[i] == checkNumbers[i]) {
-            goodNumbers.push(checkNumbers[i]);
-            score++;
+    send.addEventListener("click", 
+        function () {
+            userNumbers = document.getElementById("userData").value;
+            console.log("userNumbers", userNumbers);
+
+            const checkNumbers = userNumbers.split(" ");
+            console.log("checkNumbers", checkNumbers);
+
+            let score = 0;
+            let wrongNumbers = 0;
+
+            const goodNumbers = [];
+
+            for (let i = 0; i < 5; i++) {
+                if (cpuNumbers[i] == checkNumbers[i]) {
+                    goodNumbers.push(checkNumbers[i]);
+                    score++;
+                }
+                if (cpuNumbers[i] != checkNumbers[i]) {
+                    wrongNumbers++;
+                }
+            }
+
+            
+            if (checkNumbers.length < 5 || checkNumbers.length > 5) {
+                alert("Quantità di numeri sbagliata, ricarica e riprova!");
+            }
+            else if (wrongNumbers == 5) {
+                alert("Mi dispiace, hai perso.");
+            }
+            else {
+                alert("Hai indovinato " + score + " numeri. Ovvero: " + goodNumbers);
+            }
+                
+            console.log("score", score);
+            console.log("goodNumbers", goodNumbers);
         }
-        if (cpuNumbers[i] != checkNumbers[i]) {
-            wrongNumbers++;
-        }
-    }
-
-    if (wrongNumbers == 5) {
-        alert("Mi dispiace, hai perso.");
-    }
-    else {
-        alert("Hai indovinato " + score + " numeri. Ovvero: " + goodNumbers);
-    }
-    
-
-    console.log("score", score);
-    console.log("goodNumbers", goodNumbers);
+    );
 }
